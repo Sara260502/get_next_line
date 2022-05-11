@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: szicchie <szicchie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/12 00:03:42 by szicchie          #+#    #+#             */
+/*   Updated: 2022/05/12 00:09:09 by szicchie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 /* Looks for a newline character in the given linked list. */
-int	found_newline(t_list *stash)
+int	found_new_line(t_list *stash)
 {
 	int		i;
 	t_list	*current;
 
 	if (stash == NULL)
-		return (0); 
-	current = ft_lst_get_last(stash);//here i now that if i read 1 buff 50 times tgere isn't a /n, so i go directly on the last one
+		return (0);
+	current = ft_lst_get_last(stash);
 	i = 0;
-	while (current->content[i])// as long as there is something in my string
+	while (current->content[i])
 	{
 		if (current->content[i] == '\n')
-			return (1); // found it
+			return (1);
 		i++;
 	}
 	return (0);
@@ -24,7 +36,7 @@ int	found_newline(t_list *stash)
 t_list	*ft_lst_get_last(t_list *stash)
 {
 	t_list	*current;
-	
+
 	current = stash;
 	while (current && current->next)
 		current = current->next;
